@@ -1,9 +1,8 @@
-// This file is the property of Milad Mehmoody Zargar.
-// Unauthorized copying of this file, via any medium is strictly prohibited.
-// Proprietary and confidential.
+// Copyright (c) 2026 Milad Mehmood Zargar.
+// All rights reserved.
 
-// file transmitter.py, here we have to define the transmitter functions, which are responsible for generating data streams to the receiver.
-// Need to check this line: "The transmitter will handle the encoding of data, error checking, and managing the transmission protocol."
+// Transmitter module.
+// Provides functions for generating bit streams and applying modulation.
 
 # include <iostream>
 # include <cstdlib>

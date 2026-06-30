@@ -1,8 +1,8 @@
-// This file is the property of Milad Mehmoody Zargar.
-// Unauthorized copying of this file, via any medium is strictly prohibited.
-// Proprietary and confidential.
+// Copyright (c) 2026 Milad Mehmood Zargar.
+// All rights reserved.
 
-// Transmitter functions for handling data transmission
+// Transmitter module.
+// Provides functions for generating bit streams and applying modulation.
 
 # ifndef TRANSMITTER_HPP
 # define TRANSMITTER_HPP
