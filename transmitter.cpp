@@ -23,3 +23,15 @@ std::vector<int> generate_bits(int number_of_bits)
     }
     return bis;
 }
+
+std::vector<int> bpsk_modulate(const std::vector<int>& bits)
+{
+    std::vector<int> bpsk_symbols;
+
+    for (int bit : bits)
+    {
+        bpsk_symbols.push_back(( bit == 0 ) ? -1 : 1 );
+    }
+
+    return bpsk_symbols;
+}

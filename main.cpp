@@ -17,6 +17,7 @@
 int main()
 {
     std::cout << "\n SDR C++ simulation started, initializing components... \n" << std::endl;
+    test_transmitter();
 
     /*  Current time changes every second.
         So srand(time(...)) gives rand() a different starting point/seed.
@@ -26,12 +27,19 @@ int main()
 
     int bit_length = 10;
     std::vector<int> bits = generate_bits(bit_length);
+    std::vector<int> bitsbpsk_symbols = bpsk_modulate(bits);
 
-    test_transmitter();
+
 
     for ( int bit : bits)
     {
-        std::cout << bit << " ";
+        std::cout << bit << "  ";
+    }
+    std::cout << std::endl;
+
+    for ( int symbol : bitsbpsk_symbols)
+    {
+        std::cout << symbol << " ";
     }
     std::cout << std::endl;
 

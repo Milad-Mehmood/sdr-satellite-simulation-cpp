@@ -11,5 +11,6 @@
 
 void test_transmitter();
 std::vector<int> generate_bits(int number_of_bits);
+std::vector<int> bpsk_modulate(const std::vector<int>& bits);
 
 #endif // TRANSMITTER_HPP
