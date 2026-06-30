@@ -6,9 +6,20 @@
 // Need to check this line: "The transmitter will handle the encoding of data, error checking, and managing the transmission protocol."
 
 # include <iostream>
+# include <cstdlib>
 # include "transmitter.hpp"
 
 void test_transmitter()
 {
     std::cout << "\n Transmitter file connected \n" << std::endl;
+}
+
+std::vector<int> generate_bits(int number_of_bits)
+{
+    std::vector<int> bis;
+    for ( int i = 0 ; i < number_of_bits ; i++)
+    {
+        bis.push_back(rand()%2);
+    }
+    return bis;
 }

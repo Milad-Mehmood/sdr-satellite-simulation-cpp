@@ -7,6 +7,9 @@
 # ifndef TRANSMITTER_HPP
 # define TRANSMITTER_HPP
 
+# include <vector>
+
 void test_transmitter();
+std::vector<int> generate_bits(int number_of_bits);
 
 #endif // TRANSMITTER_HPP
