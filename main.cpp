@@ -31,6 +31,7 @@ int main()
     std::vector<int> bpsk_symbols = bpsk_modulate(bits);
     std::vector<double> noisy_signal = add_noise(bpsk_symbols);
     std::vector<int> received_bits = bpsk_demodulation(noisy_signal);
+    double ber = calculate_ber(bits, received_bits);
 
     for ( int bit : bits)
     {
@@ -55,6 +56,9 @@ int main()
         std::cout << recovered_bit << " ";
     }
     std::cout << std::endl;
+    std::cout << "BER: " << ber << std::endl;
+
+    
 
     return 0;
 }
