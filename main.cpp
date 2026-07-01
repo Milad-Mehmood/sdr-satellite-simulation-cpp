@@ -23,12 +23,51 @@ int getBitLength()
     return bitLength;
 }
 
+int getBitPrintLength(int bit_length)
+{
+    int printLength = 0;
+    std::cout << "Enter the bit length to be printed: ";
+    while(1)
+    {
+        std::cin >> printLength;
+        if (bit_length < printLength)
+        {
+            std::cout << "\nPrint Length can't be more than Bit Length, please enter a valid value." << std::endl;
+        }
+        else
+        {
+            break;
+        }
+    }
+    return printLength;
+}
+
 double getNoiseStrength()
 {
     double noiseStrength = 0;
     std::cout << "Enter the channel noise strength: ";
     std::cin >> noiseStrength;
     return noiseStrength;
+}
+
+void print_first_values(const std::vector<int>& values, int count)
+{
+    for (int i = 0; i < count; ++i)
+    {
+        std::cout << values[i] << " ";
+    }
+
+    std::cout << "\n";
+}
+
+void print_first_values_double(const std::vector<double>& values, int count)
+{
+    for (int i = 0; i < count; ++i)
+    {
+        std::cout << values[i] << " ";
+    }
+
+    std::cout << "\n";
 }
 
 int main()
@@ -43,36 +82,25 @@ int main()
     srand(static_cast<unsigned int>(time(nullptr)));
 
     int bit_length = getBitLength();
+    int bit_printLength = getBitPrintLength(bit_length);
     double noiseStrength = getNoiseStrength();
     std::vector<int> bits = generate_bits(bit_length);
     std::vector<int> bpsk_symbols = bpsk_modulate(bits);
-    std::vector<double> noisy_signal = add_noise(bpsk_symbols, noiseStrength);
-    std::vector<int> received_bits = bpsk_demodulation(noisy_signal);
+    std::vector<double> noisy_symbols = add_noise(bpsk_symbols, noiseStrength);
+    std::vector<int> received_bits = bpsk_demodulation(noisy_symbols);
     double ber = calculate_ber(bits, received_bits);
 
-    std::cout << "\n\nBits: " << std::endl;
-    for ( int bit : bits)
-    {
-        std::cout << bit << " ";
-    }
+    std::cout << "\nBits: " << std::endl;
+    print_first_values(bits, 10);
 
-    std::cout << "\n\nBPSK Symbols: " << std::endl;
-    for ( int symbol : bpsk_symbols)
-    {
-        std::cout << symbol << " ";
-    }
+    std::cout << "\nBPSK Symbols: " << std::endl;
+    print_first_values(bpsk_symbols, 10);
 
-    std::cout << "\n\nNoisy Signal: " << std::endl;
-    for ( double noisy_symbol : noisy_signal)
-    {
-        std::cout << noisy_symbol << " ";
-    }
+    std::cout << "\nNoisy Signal: " << std::endl;
+    print_first_values_double(noisy_symbols, 10);
 
-    std::cout << "\n\nRecovered Bits: " << std::endl;
-    for ( int recovered_bit : received_bits)
-    {
-        std::cout << recovered_bit << " ";
-    }
+    std::cout << "\nRecovered Bits: " << std::endl;
+    print_first_values(received_bits, 10);
 
     std::cout << "\nBER: " << ber << std::endl;
 
