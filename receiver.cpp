@@ -24,7 +24,7 @@ double calculate_ber(const std::vector<int> original_bits, const std::vector<int
     int error_count = 0;
     for ( int i = 0 ; i < original_bits.size() ; i++ )
     {
-        if ( original_bits != recovered_bits )
+        if ( original_bits[i] != recovered_bits[i] )
         {
             error_count++;
         }

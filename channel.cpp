@@ -16,9 +16,8 @@ std::vector<double> add_noise(std::vector<int>& symbols)
     
     for ( int symbol : symbols)
     {
-        double noise = ((static_cast<double>(rand()) / RAND_MAX) - 0.5);
+        double noise = ((static_cast<double>(rand()) / RAND_MAX) - 0.5) * 1.0;
         noisy_signal.push_back(symbol + noise);
     }
     return noisy_signal;
 }
-
