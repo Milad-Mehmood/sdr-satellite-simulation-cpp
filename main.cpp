@@ -13,6 +13,7 @@
 
 # include "transmitter.hpp"
 # include "channel.hpp"
+# include "receiver.hpp"
 
 int main()
 {
@@ -29,6 +30,7 @@ int main()
     std::vector<int> bits = generate_bits(bit_length);
     std::vector<int> bpsk_symbols = bpsk_modulate(bits);
     std::vector<double> noisy_signal = add_noise(bpsk_symbols);
+    std::vector<int> received_bits = bpsk_demodulation(noisy_signal);
 
     for ( int bit : bits)
     {
@@ -45,6 +47,12 @@ int main()
     for ( double noisy_symbol : noisy_signal)
     {
         std::cout << noisy_symbol << " ";
+    }
+    std::cout << std::endl;
+
+    for ( int recovered_bit : received_bits)
+    {
+        std::cout << recovered_bit << " ";
     }
     std::cout << std::endl;
 
