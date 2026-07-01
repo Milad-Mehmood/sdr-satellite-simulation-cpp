@@ -9,6 +9,6 @@
 
 # include <vector>
 
-std::vector<double> add_noise(std::vector<int>& symbols);
+std::vector<double> add_noise(std::vector<int>& symbols, double noise);
 
 #endif // CHANNEL_HPP

@@ -15,6 +15,22 @@
 # include "channel.hpp"
 # include "receiver.hpp"
 
+int getBitLength()
+{
+    int bitLength = 0;
+    std::cout << "Enter the bit length: ";
+    std::cin >> bitLength;
+    return bitLength;
+}
+
+double getNoiseStrength()
+{
+    double noiseStrength = 0;
+    std::cout << "Enter the channel noise strength: ";
+    std::cin >> noiseStrength;
+    return noiseStrength;
+}
+
 int main()
 {
     std::cout << "\n SDR C++ simulation started, initializing components... \n" << std::endl;
@@ -26,10 +42,11 @@ int main()
         Different random sequence → different bit stream. */
     srand(static_cast<unsigned int>(time(nullptr)));
 
-    int bit_length = 10;
+    int bit_length = getBitLength();
+    double noiseStrength = getNoiseStrength();
     std::vector<int> bits = generate_bits(bit_length);
     std::vector<int> bpsk_symbols = bpsk_modulate(bits);
-    std::vector<double> noisy_signal = add_noise(bpsk_symbols);
+    std::vector<double> noisy_signal = add_noise(bpsk_symbols, noiseStrength);
     std::vector<int> received_bits = bpsk_demodulation(noisy_signal);
     double ber = calculate_ber(bits, received_bits);
 
