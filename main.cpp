@@ -91,16 +91,16 @@ int main()
     double ber = calculate_ber(bits, received_bits);
 
     std::cout << "\nBits: " << std::endl;
-    print_first_values(bits, 10);
+    print_first_values(bits, bit_printLength);
 
     std::cout << "\nBPSK Symbols: " << std::endl;
-    print_first_values(bpsk_symbols, 10);
+    print_first_values(bpsk_symbols, bit_printLength);
 
     std::cout << "\nNoisy Signal: " << std::endl;
-    print_first_values_double(noisy_symbols, 10);
+    print_first_values_double(noisy_symbols, bit_printLength);
 
     std::cout << "\nRecovered Bits: " << std::endl;
-    print_first_values(received_bits, 10);
+    print_first_values(received_bits, bit_printLength);
 
     std::cout << "\nBER: " << ber << std::endl;
 
